@@ -9,6 +9,15 @@ public class LoaderModule : MonoBehaviour
     public Action<GameObject> OnLoadCompleted;
     private string tempResourcesPath = "Assets/Resources/TempSave/";
 
+    private void Awake()
+    {
+        if (!Directory.Exists(tempResourcesPath))
+        {
+            // TempSave 폴더가 없다면 생성
+            Directory.CreateDirectory(tempResourcesPath);
+        }
+    }
+
     // 1번 문제
     public void LoadAsset_1(string assetName)
     {
